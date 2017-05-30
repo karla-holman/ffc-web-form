@@ -38,4 +38,20 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model "Admin" do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model "House" do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model "ServiceProvider" do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
 end
