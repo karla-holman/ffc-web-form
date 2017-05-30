@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: ffc_web_form_production
   username: ffc_web_form
   password: <%= ENV['FFC_WEB_FORM_DATABASE_PASSWORD'] %>
