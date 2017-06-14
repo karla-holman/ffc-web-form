@@ -44,6 +44,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', :require => false, :group => :test
   gem 'fabrication'
