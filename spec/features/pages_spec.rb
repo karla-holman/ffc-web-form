@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Page', type: :feature do
   let!(:my_page) { Fabricate :page }
+  let!(:attachment) { Fabricate :attachment, page: my_page }
 
   scenario 'User visits the page' do
     visit page_path(my_page.id)

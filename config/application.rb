@@ -22,5 +22,24 @@ module FfcWebForm
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.paperclip_defaults = {
+      s3_credentials: {
+        bucket: ENV['AWS_S3_BUCKET_NAME'],
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+        s3_region: 'us-west-2'
+      },
+      storage: :s3,
+      s3_headers: { 'Cache-Control' => 'max-age=31557600' },
+      s3_protocol: 'https',
+      bucket: ENV['AWS_S3_BUCKET_NAME'],
+      s3_host_name: 's3-us-west-2.amazonaws.com',
+      s3_region: 'us-west-2',
+
+      path: '/:class/:id/:style/:basename.:extension',
+      default_url: '/images/:style/missing.png',
+      default_style: 'medium'
+    }
   end
 end
