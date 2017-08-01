@@ -5,15 +5,40 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
-  <%= render 'layouts/nav' %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div class="container">
-    <%= yield %>
+  <%= render 'layouts/sidebar' %>
+
+  <!--Main Content Start -->
+        <section class="content">
+            <!-- Header -->
+            <header class="top-head container-fluid">
+              <%= render 'layouts/nav' %>
+            </header>
+            <!-- Header Ends -->
+
+
+            <!-- Page Content Start -->
+            <!-- ================== -->
+
+            <div class="wraper container-fluid">
+                <%= yield %>
+            </div>
+            <!-- Page Content Ends -->
+            <!-- ================== -->
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <%= Date.today.year %> © Navarre + Pollowitz.
+            </footer>
+            <!-- Footer Ends -->
+
+
+        </section>
+        <!-- Main Content Ends -->
   </div>
-
 </body>
 </html>

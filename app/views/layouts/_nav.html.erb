@@ -1,34 +1,136 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Navarre + Pollowitz</a>
-    </div>
+<header class="top-head container-fluid">
+<button type="button" class="navbar-toggle pull-left">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% Page.all.each do |page| %>
-          <li><%= link_to page.name, page_path(page) %></li>
-        <% end %>
-        <li><%= link_to 'Admin', '/admin' %></li>
+<!-- Search -->
+<form role="search" class="navbar-left app-search pull-left hidden-xs">
+  <input placeholder="Search..." class="form-control" type="text">
+  <a href=""><i class="fa fa-search"></i></a>
+</form>
+
+<!-- Left navbar -->
+<nav class=" navbar-default" role="navigation">
+    <ul class="nav navbar-nav hidden-xs">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">English <span class="caret"></span></a>
+            <ul role="menu" class="dropdown-menu">
+              <% Page.all.each do |page| %>
+                <li><%= link_to page.name, page_path(page) %></li>
+              <% end %>
+            </ul>
         </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+        <li><a href="#">Files</a></li>
+    </ul>
+
+    <!-- Right navbar -->
+    <ul class="nav navbar-nav navbar-right top-menu top-right-menu">
+        <!-- mesages -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <span class="badge badge-sm up bg-purple count">4</span>
+            </a>
+            <ul class="dropdown-menu extended fadeInUp animated nicescroll" tabindex="5001" style="overflow: hidden;">
+                <li>
+                    <p>Messages</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left">
+                          <%= image_tag 'avatar-2.jpg', class: 'img-circle thumb-sm m-r-15', alt: 'img' %>
+                        </span>
+                        <span class="block"><strong>John smith</strong></span>
+                        <span class="media-body block">New tasks needs to be done<br><small class="text-muted">10 seconds ago</small></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left">
+                            <%= image_tag 'avatar-3.jpg', class: 'img-circle thumb-sm m-r-15', alt: 'img' %>
+                        </span>
+                        <span class="block"><strong>John smith</strong></span>
+                        <span class="media-body block">New tasks needs to be done<br><small class="text-muted">3 minutes ago</small></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left">
+                          <%= image_tag 'avatar-4.jpg', class: 'img-circle thumb-sm m-r-15', alt: 'img' %>
+                        </span>
+                        <span class="block"><strong>John smith</strong></span>
+                        <span class="media-body block">New tasks needs to be done<br><small class="text-muted">10 minutes ago</small></span>
+                    </a>
+                </li>
+                <li>
+                    <p><a href="inbox.html" class="text-right">See all Messages</a></p>
+                </li>
+            </ul>
+        </li>
+        <!-- /messages -->
+        <!-- Notification -->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="glyphicon glyphicon-bell"></span>
+                <span class="badge badge-sm up bg-pink count">3</span>
+            </a>
+            <ul class="dropdown-menu extended fadeInUp animated nicescroll" tabindex="5002" style="overflow: hidden;">
+                <li class="noti-header">
+                    <p>Notifications</p>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left"><i class="fa fa-user-plus fa-2x text-info"></i></span>
+                        <span>New user registered<br><small class="text-muted">5 minutes ago</small></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left"><i class="fa fa-diamond fa-2x text-primary"></i></span>
+                        <span>Use animate.css<br><small class="text-muted">5 minutes ago</small></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="pull-left"><i class="fa fa-bell-o fa-2x text-danger"></i></span>
+                        <span>Send project demo files to client<br><small class="text-muted">1 hour ago</small></span>
+                    </a>
+                </li>
+
+                <li>
+                    <p><a href="#" class="text-right">See all notifications</a></p>
+                </li>
+            </ul>
+        </li>
+        <!-- /Notification -->
+
+        <!-- user login dropdown start-->
+        <li class="dropdown text-center">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <%= image_tag 'avatar-2.jpg', class: 'img-circle profile-img thumb-sm' %>
+                <span class="username">John Deo </span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
+                <li><a href="profile.html"><i class="fa fa-briefcase"></i>Profile</a></li>
+                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fa fa-bell"></i> Friends <span class="label label-info pull-right mail-info">5</span></a></li>
+                <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+            </ul>
+        </li>
+        <!-- user login dropdown end -->
+    </ul>
+    <!-- End right navbar -->
 </nav>
+
+<div id="ascrail2000" class="nicescroll-rails" style="width: 7px; z-index: 3; cursor: default; position: absolute; top: 0px; left: 23px; height: 327px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; background-color: rgb(157, 158, 165); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails" style="height: 7px; z-index: 3; top: 320px; left: -250px; position: absolute; cursor: default; display: none;">
+<div style="position: relative; top: 0px; height: 5px; width: 0px; background-color: rgb(157, 158, 165); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;"></div></div><div id="ascrail2001" class="nicescroll-rails" style="width: 7px; z-index: 3; cursor: default; position: absolute; top: 0px; left: 23px; height: 267px; display: none;"><div style="position: relative; top: 0px; float: right; width: 5px; height: 0px; background-color: rgb(157, 158, 165); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;">
+</div>
+</div>
+  <div id="ascrail2001-hr" class="nicescroll-rails" style="height: 7px; z-index: 3; top: 260px; left: -250px; position: absolute; cursor: default; display: none;">
+    <div style="position: relative; top: 0px; height: 5px; width: 0px; background-color: rgb(157, 158, 165); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 0px;">
+    </div>
+  </div>
+</header>
