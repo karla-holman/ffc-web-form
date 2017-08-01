@@ -5,44 +5,28 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Leases</h3>
-      </div>
-      <div class="panel-body">
-        Get more information on leases
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Maintanence and Repair</h3>
-      </div>
-      <div class="panel-body">
-        Get more information on leases
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Vendors</h3>
-      </div>
-      <div class="panel-body">
-        Find a list of vendors
+  <% Page.all.each do |page| %>
+    <div class="col-md-3">
+      <div class="portlet">
+        <div class="portlet-heading">
+            <h3 class="portlet-title text-dark">
+                <%= page.name %>
+            </h3>
+            <div class="portlet-widgets">
+                <a href="javascript:;" data-toggle="reload"><span class="glyphicon glyphicon-refresh"></span></a>
+                <span class="divider"></span>
+                <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default"><span class="glyphicon glyphicon-minus"></span></a>
+                <span class="divider"></span>
+                <a href="#" data-toggle="remove"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="bg-default" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <%= page.content.html_safe %>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Roles and Responsibilities</h3>
-      </div>
-      <div class="panel-body">
-        Get more information on leases
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>

@@ -29,6 +29,8 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 2.3.0'
 gem 'aws-sdk-core'
 
+gem 'figaro'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +43,7 @@ gem 'aws-sdk-core'
 # admin tools
 gem 'devise'
 gem 'rails_admin', '~> 1.1.1'
+gem 'ckeditor'
 gem 'geocoder'
 
 group :development, :test do

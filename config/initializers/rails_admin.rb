@@ -54,4 +54,11 @@ RailsAdmin.config do |config|
       exclude_fields :created_at, :updated_at
     end
   end
+  config.model Page do
+    edit do
+      field :name
+      field :content, :ck_editor
+      include_all_fields
+    end
+  end
 end

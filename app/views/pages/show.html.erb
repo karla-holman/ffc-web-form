@@ -1,50 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card card-nav-tabs">
-        <div class="header header-info">
-          <h1><%= @page.name %></h1>
-        </div>
-        <div class="content">
-          <%= @page.content.html_safe %>
-        </div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="portlet">
+      <div class="portlet-heading bg-primary">
+          <h3 class="portlet-title">
+            <%= @page.name %>
+          </h3>
+          <div class="portlet-widgets">
+              <a href="javascript:;" data-toggle="reload"><span class="glyphicon glyphicon-refresh"></span></a>
+              <span class="divider"></span>
+              <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default"><span class="glyphicon glyphicon-minus"></span></a>
+              <span class="divider"></span>
+              <a href="#" data-toggle="remove"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <div id="bg-default" class="panel-collapse collapse in">
+          <div class="portlet-body">
+              <%= @page.content.html_safe %>
+          </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card card-nav-tabs">
-							<div class="header header-success">
-								<!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-								<div class="nav-tabs-navigation">
-									<div class="nav-tabs-wrapper">
-										<ul class="nav nav-tabs" data-tabs="tabs">
-											<li class="active">
-												<a href="#attachments" data-toggle="tab">
-													<i class="material-icons">attach_file</i>
-													Attachments
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="content">
-								<div class="tab-content text-center">
-									<div class="tab-pane active" id="attachments">
-										<% @page.attachments.each do |attachment| %>
-                      <p>
-                        <%= link_to attachment.name, attachment.file_attachment.url() %>
-                      </p>
-                    <% end %>
-									</div>
-									<div class="tab-pane" id="messages">
-										<p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-									</div>
-									<div class="tab-pane" id="settings">
-										<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
-									</div>
-								</div>
-							</div>
-						</div>
+  </div>
+  <div class="col-md-4">
+    <div class="portlet">
+      <div class="portlet-heading bg-primary">
+          <h3 class="portlet-title">
+            Attachments
+          </h3>
+          <div class="portlet-widgets">
+              <a href="javascript:;" data-toggle="reload"><span class="glyphicon glyphicon-refresh"></span></a>
+              <span class="divider"></span>
+              <a data-toggle="collapse" data-parent="#accordion1" href="#bg-default"><span class="glyphicon glyphicon-minus"></span></a>
+              <span class="divider"></span>
+              <a href="#" data-toggle="remove"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <div id="bg-default" class="panel-collapse collapse in">
+          <div class="portlet-body">
+            <% @page.attachments.each do |attachment| %>
+              <p>
+                <%= link_to attachment.name, attachment.file_attachment.url(:original) %>
+              </p>
+            <% end %>
+          </div>
+      </div>
     </div>
   </div>
 </div>
