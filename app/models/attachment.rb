@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
-  validates :name, :description, :page_id, presence: true
+  validates :name, :description, :attachable_id, presence: true
 
-  belongs_to :page
+  belongs_to :attachable, polymorphic: true
 
   has_attached_file :file_attachment
   validates_attachment :file_attachment,
