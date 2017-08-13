@@ -11,12 +11,13 @@
  * file per style scope.
  */
 
- @import "bootstrap-reset";
  @import "bootstrap-theme.min";
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "bootstrap-reset";
  @import "velonic";
  @import "helper";
  @import "morris";
  @import "animate";
  @import "custom";
+ @import "font-awesome";
