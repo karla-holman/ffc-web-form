@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801050713) do
+ActiveRecord::Schema.define(version: 20170813184333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,16 +37,17 @@ ActiveRecord::Schema.define(version: 20170801050713) do
   create_table "attachments", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "page_id"
+    t.integer  "attachable_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "file_attachment_file_name"
     t.string   "file_attachment_content_type"
     t.integer  "file_attachment_file_size"
     t.datetime "file_attachment_updated_at"
+    t.string   "attachable_type"
   end
 
-  add_index "attachments", ["page_id"], name: "index_attachments_on_page_id", using: :btree
+  add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id", using: :btree
 
   create_table "houses", force: :cascade do |t|
     t.string   "address1"
@@ -60,6 +61,11 @@ ActiveRecord::Schema.define(version: 20170801050713) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "service_provider_id"
+    t.string   "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "houses", ["service_provider_id"], name: "index_houses_on_service_provider_id", using: :btree

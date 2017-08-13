@@ -13,7 +13,8 @@
     <!-- Navbar Start -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li class="<%= current_page?(root_path) ? 'active' : '' %>"><%= link_to root_path do %><span class="nav-label"><i class="fa fa-home"></i>Dashboard</span><% end %></li>
+            <li class="<%= current_page?(root_path) ? 'active' : '' %>"><%= link_to root_path do %><span class="nav-label"><i class="fa fa-tachometer"></i>Dashboard</span><% end %></li>
+            <li class="<%= current_page?(houses_path) ? 'active' : '' %>"><%= link_to houses_path do %><span class="nav-label"><i class="fa fa-home"></i>Properties</span><% end %></li>
             <% Page.all.each do |page| %>
               <li class="<%= @page && @page.name == page.name ? 'active' : '' %>"><%= link_to page_path(page) do %><span class="nav-label"><i class="fa fa-<%= page.icon %>"></i><%= page.name %></span><% end %></li>
             <% end %>

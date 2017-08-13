@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>Properties</h1>
+  </div>
+</div>
+
+<div class="row">
+  <% @houses.each do |house| %>
+    <div class="col-md-4">
+      <div class="profile-widget text-center">
+          <div class="bg-info bg-profile"></div>
+          <%= image_tag house.image.url(:thumb), class: 'thumb-lg img-circle img-thumbnail', alt: "#{house.name}" %>
+          <h3><%= house.name %></h3>
+          <p><%= link_to "http://maps.google.com/?q=#{house.latitude},#{house.longitude}", target: '_blank' do %><i class="fa fa-map-marker"></i> <%= house.address1 %><% end %></p>
+          <%= link_to 'View', house, class: 'btn btn-sm btn-purple m-t-20' %>
+          <ul class="list-inline widget-list clearfix">
+              <li class="col-md-4"><span>5</span>Tenants</li>
+              <li class="col-md-4"><span>2</span>Reminders</li>
+              <li class="col-md-4"><span>4</span>Maintenance</li>
+          </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
