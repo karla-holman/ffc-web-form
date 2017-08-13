@@ -58,6 +58,9 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :content, :ck_editor
+      field :icon do
+        help 'Use http://fontawesome.io/icons/'
+      end
       include_all_fields
     end
   end
