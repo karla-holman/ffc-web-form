@@ -1,7 +1,7 @@
 class House < ActiveRecord::Base
   validates :name, :address1, :city, :state, :zip, :country, presence: true
 
-  belongs_to :service_provider
+  belongs_to :user
   has_many :attachments, as: :attachable, dependent: :destroy
 
   geocoded_by :address   # can also be an IP address

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe House, type: :model do
+  let(:house) { Fabricate :house }
+  
   it { is_expected.to validate_presence_of(:address1) }
   it { is_expected.to  validate_presence_of(:city) }
   it { is_expected.to  validate_presence_of(:state) }
@@ -15,7 +17,7 @@ RSpec.describe House, type: :model do
   it { is_expected.to validate_attachment_size(:image).
                 less_than(10.megabytes) }
 
-  it { is_expected.to belong_to(:service_provider) }
+  it { is_expected.to belong_to(:user) }
   it { is_expected.to have_many(:attachments) }
 
   describe '#address' do

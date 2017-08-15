@@ -31,12 +31,14 @@ class Ability
 
     # can :read, :all                   # allow everyone to read everything
     if user && user.admin?
+      can :read, :all
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
       can :manage, :all
       can :access, :houses
     elsif user
       can :access, :houses
+      can :read, :houses
     end
   end
 end

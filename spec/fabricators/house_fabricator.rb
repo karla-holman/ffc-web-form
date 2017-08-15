@@ -1,4 +1,5 @@
 Fabricator(:house) do
+  name { Faker::Lorem.word }
   address1 { Faker::Address.street_address }
   city { Faker::Address.city }
   state { Faker::Address.state_abbr }
