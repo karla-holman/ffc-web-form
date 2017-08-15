@@ -54,6 +54,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    cancancan (1.15.0)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -219,6 +220,9 @@ GEM
       rdoc (~> 4.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    simple_form (3.3.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -261,6 +265,7 @@ DEPENDENCIES
   aws-sdk-core
   bootstrap-sass (~> 3.3.6)
   byebug
+  cancancan
   capybara
   capybara-screenshot
   ckeditor
@@ -281,6 +286,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.1)
+  simple_form
   simplecov
   spring
   turbolinks

@@ -44,6 +44,7 @@ gem 'figaro'
 # admin tools
 gem 'devise'
 gem 'rails_admin', '~> 1.1.1'
+gem 'cancancan'
 gem 'ckeditor'
 gem 'geocoder'
 
@@ -56,6 +57,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', :require => false, :group => :test
+  gem 'simple_form'
   gem 'fabrication'
   gem 'faker'
 end
