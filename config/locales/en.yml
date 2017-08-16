@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  enumerize:
+    maintenance:
+      priority:
+        low: "Low"
+        medium: "Medium"
+        high: "High"
+      category:
+        home_improvement: "Home Improvement"
+        exterior: "Exterior"
+        interior: "Interior"

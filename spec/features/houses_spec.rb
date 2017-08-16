@@ -7,6 +7,7 @@ RSpec.feature 'House', type: :feature do
   let!(:admin_house) { Fabricate :house, user: admin }
   let!(:user_house) { Fabricate :house, user: new_user }
   let!(:user_house_units) { Fabricate.times(6, :unit, house: user_house) }
+  let!(:user_house_maintenances) { Fabricate.times(3, :maintenance, house: user_house) }
 
   describe 'visiting the properties page' do
     context 'as a user' do
@@ -87,6 +88,24 @@ RSpec.feature 'House', type: :feature do
         end
       end
 
+      it 'shows the proper number of maintenances' do
+        visit houses_path
+
+        expect(page).to have_content('Properties')
+
+        House.all.each do |house|
+          expect(page).to have_css("#house-#{house.id}")
+
+          within("#house-#{house.id}") do
+            expect(page).to have_content("#{house.maintenances.length}")
+          end
+        end
+
+        within("#house-#{user_house.id}") do
+          expect(page).to have_content("3")
+        end
+      end
+
       it 'views all the units' do
         visit house_path(user_house)
 
@@ -94,6 +113,16 @@ RSpec.feature 'House', type: :feature do
 
         user_house.units.each do |unit|
           expect(page).to have_content(unit.name)
+        end
+      end
+
+      it 'views all the maintenances' do
+        visit house_path(user_house)
+
+        expect(page).to have_content('Maintenance')
+
+        user_house.maintenances.each do |maintenance|
+          expect(page).to have_content(maintenance.title)
         end
       end
     end

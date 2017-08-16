@@ -20,6 +20,7 @@ RSpec.describe House, type: :model do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to have_many(:attachments) }
   it { is_expected.to have_many(:units) }
+  it { is_expected.to have_many(:maintenances) }
 
   describe '#address' do
     let(:house) { House.create(address1: '12345 23rd st', city: 'Seattle', state: 'WA', country: 'USA', zip: '98155') }
