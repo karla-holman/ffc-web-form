@@ -10,7 +10,7 @@ RailsAdmin.config do |config|
 
   ## == Cancan ==
   config.authorize_with :cancan
-  
+
   config.parent_controller = 'ApplicationController'
 
   ## == Pundit ==
@@ -51,9 +51,11 @@ RailsAdmin.config do |config|
       exclude_fields :created_at, :updated_at
     end
   end
-  config.model "ServiceProvider" do
+  config.model "User" do
     list do
-      exclude_fields :created_at, :updated_at
+      field :name
+      field :admin
+      field :email
     end
   end
   config.model Page do

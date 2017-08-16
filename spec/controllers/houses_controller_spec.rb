@@ -4,6 +4,8 @@ RSpec.describe HousesController, type: :controller do
   let!(:admin) { Fabricate :admin_user }
   let!(:new_user) { Fabricate :user }
   let!(:houses) { Fabricate.times(3, :house) }
+  let!(:admin_house) { Fabricate :house, user: admin }
+  let!(:user_house) { Fabricate :house, user: new_user }
 
   describe 'index' do
     context 'as an admin user' do
@@ -15,6 +17,7 @@ RSpec.describe HousesController, type: :controller do
         get :index
 
         expect(assigns(:houses)).to eq House.all
+        expect(assigns(:houses).length).to eq 5
       end
     end
 
@@ -26,8 +29,9 @@ RSpec.describe HousesController, type: :controller do
 
         get :index
 
-        expect(assigns(:houses)).to eq House.all
-        expect(assigns(:houses).length).to eq 3
+        expect(assigns(:houses)).to include user_house
+        expect(assigns(:houses).length).to eq 1
+        expect(assigns(:houses)).to_not include admin_house
       end
     end
 

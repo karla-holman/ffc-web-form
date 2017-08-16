@@ -112,12 +112,13 @@
             <li class="dropdown text-center">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <%= image_tag 'avatar-2.jpg', class: 'img-circle profile-img thumb-sm' %>
-                    <span class="username">John Deo </span> <span class="caret"></span>
+                    <span class="username"><%= current_user.name %> </span> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu pro-menu fadeInUp animated" tabindex="5003" style="overflow: hidden; outline: none;">
-                    <li><a href="profile.html"><i class="fa fa-briefcase"></i>Profile</a></li>
-                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                    <li><a href="#"><i class="fa fa-bell"></i> Friends <span class="label label-info pull-right mail-info">5</span></a></li>
+                    <li><%= link_to edit_user_registration_path do %><i class="fa fa-briefcase"></i> Profile</a><% end %></li>
+                    <% if current_user.admin? %>
+                      <li><%= link_to rails_admin_path, target: '_blank' do %><i class="fa fa-cog"></i> Admin<% end %></li>
+                    <% end %>
                     <li><%= link_to destroy_user_session_path, method: :delete do %><i class="fa fa-sign-out"></i> Log Out<% end %></li>
                 </ul>
             </li>
