@@ -6,6 +6,7 @@ RSpec.describe HousesController, type: :controller do
   let!(:houses) { Fabricate.times(3, :house) }
   let!(:admin_house) { Fabricate :house, user: admin }
   let!(:user_house) { Fabricate :house, user: new_user }
+  let!(:user_house_units) { Fabricate.times(6, :unit, house: user_house) }
 
   describe 'index' do
     context 'as an admin user' do
@@ -42,6 +43,21 @@ RSpec.describe HousesController, type: :controller do
         get :index
 
         expect(assigns(:houses)).to eq(nil)
+      end
+    end
+  end
+
+  describe 'show' do
+    context 'as an admin user' do
+      before { sign_in admin }
+
+      it 'assigns the houses' do
+        expect(subject.current_user).to_not eq(nil)
+
+        get :show, { id: user_house.id }
+
+        expect(assigns(:house)).to eq user_house
+        expect(assigns(:house).units.length).to eq 6
       end
     end
   end

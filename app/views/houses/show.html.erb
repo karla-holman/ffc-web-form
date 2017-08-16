@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @house.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="mini-stat clearfix">
+      <span class="mini-stat-icon bg-pink"><i class="fa fa-user"></i></span>
+      <div class="mini-stat-info text-right">
+          <span class="counter"><%= @house.units.length %></span>
+          Units
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="mini-stat clearfix">
+      <span class="mini-stat-icon bg-info"><i class="fa fa-bell"></i></span>
+      <div class="mini-stat-info text-right">
+          <span class="counter">5</span>
+          Reminders
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="mini-stat clearfix">
+      <span class="mini-stat-icon bg-success"><i class="fa fa-wrench"></i></span>
+      <div class="mini-stat-info text-right">
+          <span class="counter"><%= @house.units.length %></span>
+          Maintenance
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background-image: none">
+        <h3 class="panel-title">Units</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                    <thead>
+                        <tr role="row">
+                          <th class="sorting_asc" tabindex="0" aria-controls="datatable"
+                            rowspan="1" colspan="1" style="width: 121px;" aria-sort="ascending"
+                            aria-label="Name: activate to sort column descending">
+                            Name
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                          aria-label="Position: activate to sort column ascending">
+                            Rent
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                          aria-label="Office: activate to sort column ascending">
+                            Start
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                          colspan="1" aria-label="Age: activate to sort column ascending">
+                            End
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                          aria-label="Start date: activate to sort column ascending">
+                            Lease
+                          </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% @house.units.each_with_index do |unit, i| %>
+                        <tr role="row" class="<%= i % 2 == 0 ? 'even' : 'odd' %>">
+                          <td><%= unit.name %></td>
+                          <td><%= number_to_currency(unit.rent) %></td>
+                          <td><%= unit.lease_start.strftime("%m/%d/%Y") %></td>
+                          <td><%= unit.lease_end.strftime("%m/%d/%Y") %></td>
+                          <td><%= link_to unit.lease.url(:original), target: '_blank' do %><i class="fa fa-file-text"></i><% end %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      $('#datatable').DataTable();
+
+      /* Counter Up */
+      $('.counter').counterUp({
+          delay: 100,
+          time: 1200
+      });
+  });
+</script>

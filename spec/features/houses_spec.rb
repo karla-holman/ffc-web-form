@@ -86,6 +86,16 @@ RSpec.feature 'House', type: :feature do
           expect(page).to have_content("6")
         end
       end
+
+      it 'views all the units' do
+        visit house_path(user_house)
+
+        expect(page).to have_content('Units')
+
+        user_house.units.each do |unit|
+          expect(page).to have_content(unit.name)
+        end
+      end
     end
   end
 end

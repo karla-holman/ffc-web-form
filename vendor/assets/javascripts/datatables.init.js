@@ -2,7 +2,7 @@
 * Theme: Flacto Admin Template
 * Author: Coderthemes
 * Component: Datatable
-* 
+*
 */
 
 var handleDataTableButtons = function () {

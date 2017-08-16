@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require datatables.init
 //= require raphael.min
 //= require pace.min
 //= reqiure skycons.min
@@ -27,4 +26,6 @@
 //= require jquery.nicescroll
 //= require jquery.scrollTo.min
 //= require jquery.todo
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap
 //= require_tree .

@@ -8,4 +8,8 @@ class HousesController < ApplicationController
       @houses = House.where(user: current_user)
     end
   end
+
+  def show
+    @house = House.find(params[:id])
+  end
 end
