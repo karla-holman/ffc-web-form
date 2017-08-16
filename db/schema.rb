@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815062705) do
+ActiveRecord::Schema.define(version: 20170816025312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 20170815062705) do
     t.datetime "updated_at", null: false
     t.text     "intro"
     t.string   "icon"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.integer  "house_id"
+    t.string   "name"
+    t.date     "lease_start"
+    t.date     "lease_end"
+    t.decimal  "rent"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "lease_file_name"
+    t.string   "lease_content_type"
+    t.integer  "lease_file_size"
+    t.datetime "lease_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
