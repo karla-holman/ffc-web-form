@@ -38,6 +38,7 @@ class Ability
       can :access, :houses
     elsif user
       can :access, :houses
+      can :update, :houses
       can :read, :houses
     end
   end

@@ -28,4 +28,8 @@
 //= require jquery.todo
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap
+//= require bootstrap3-editable/moment.min
+//= require summernote/summernote.min
+//= require bootstrap-wysihtml5/wysihtml5-0.3.0
+//= require bootstrap-wysihtml5/bootstrap-wysihtml5
 //= require_tree .

@@ -88,6 +88,7 @@ RSpec.feature 'House', type: :feature do
         end
       end
 
+=begin
       it 'shows the proper number of maintenances' do
         visit houses_path
 
@@ -105,6 +106,33 @@ RSpec.feature 'House', type: :feature do
           expect(page).to have_content("3")
         end
       end
+=end
+
+=begin
+      it 'views all the maintenances' do
+        visit house_path(user_house)
+
+        expect(page).to have_content('Maintenance')
+
+        user_house.maintenances.each do |maintenance|
+          expect(page).to have_content(maintenance.title)
+        end
+      end
+=end
+
+    end
+  end
+
+  describe 'Show' do
+    context 'when the admin is logged in' do
+      before do
+        visit houses_path
+
+        fill_in 'user_email', with: admin.email
+        fill_in 'user_password', with: admin.password
+
+        click_button 'Log in'
+      end
 
       it 'views all the units' do
         visit house_path(user_house)
@@ -116,13 +144,21 @@ RSpec.feature 'House', type: :feature do
         end
       end
 
-      it 'views all the maintenances' do
+      it 'displays the notes' do
         visit house_path(user_house)
+        expect(page).to have_content('Admin Notes')
+        expect(page).to have_content('Service Provider Notes')
+      end
 
-        expect(page).to have_content('Maintenance')
+      it 'can update the admin notes', js: true do
+        visit house_path(admin_house)
 
-        user_house.maintenances.each do |maintenance|
-          expect(page).to have_content(maintenance.title)
+        expect(page).to have_content(admin_house.name)
+
+        expect(page).to have_css('.house_admin_notes')
+        within('.house_admin_notes') do
+          page.execute_script %Q{ $('.notes-area').data("wysihtml5").editor.setValue('test text') }
+          click_button 'Update'
         end
       end
     end

@@ -93,6 +93,7 @@
     </div>
   </div>
 </div>
+<!--
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
@@ -152,6 +153,48 @@
     </div>
   </div>
 </div>
+-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-color panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Service Provider Notes</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <%= simple_form_for @house, html: { class: 'form-horizontal m-t-40' } do |f| %>
+            <%= f.input :user_notes, label: false, placeholder: "Enter notes...", input_html: { class: 'form-control notes-area' } %>
+            <div class="form-group">
+                <button type="submit" class="btn btn-purple">Update</button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="panel panel-color panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Admin Notes</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <% if current_user.admin? %>
+            <%= simple_form_for @house, html: { class: 'form-horizontal m-t-40' } do |f| %>
+              <%= f.input :admin_notes, label: false, placeholder: "Enter notes...", input_html: { class: 'form-control notes-area' } %>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-purple">Update</button>
+              </div>
+            <% end %>
+          <% else %>
+            <%= @house.admin_notes.html_safe %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   $(document).ready(function(){
@@ -161,6 +204,11 @@
       $('.counter').counterUp({
           delay: 100,
           time: 1200
+      });
+
+      $('.notes-area').wysihtml5({
+	      "image": false, //Button to insert an image. Default true,
+	      "color": false //Button to change color of font
       });
   });
 </script>

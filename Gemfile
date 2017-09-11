@@ -48,6 +48,8 @@ gem 'cancancan'
 gem 'ckeditor'
 gem 'enumerize'
 gem 'geocoder'
+gem 'gmaps4rails'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,9 +60,9 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', :require => false, :group => :test
-  gem 'simple_form'
   gem 'fabrication'
   gem 'faker'
+  gem 'selenium-webdriver'
 end
 
 group :development do

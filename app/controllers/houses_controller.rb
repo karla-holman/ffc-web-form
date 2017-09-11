@@ -12,4 +12,22 @@ class HousesController < ApplicationController
   def show
     @house = House.find(params[:id])
   end
+
+  def update
+    @house = House.find(params[:id])
+    if @house.update_attributes(house_params)
+      redirect_to(@house, :notice => 'Updated successfully.')
+    else
+      render :show
+    end
+  end
+
+  private
+    def house_params
+      if current_user.admin?
+        params.require(:house).permit(:admin_notes, :user_notes)
+      else
+        params.require(:house).permit(:user_notes)
+      end
+    end
 end

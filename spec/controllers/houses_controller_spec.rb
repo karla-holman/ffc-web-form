@@ -61,4 +61,54 @@ RSpec.describe HousesController, type: :controller do
       end
     end
   end
+
+  describe 'update' do
+    context 'as an admin user' do
+      before { sign_in admin }
+
+      it 'can update the admin notes' do
+        expect(subject.current_user).to_not eq(nil)
+        expect(user_house.admin_notes).to eq nil
+
+        put :update, { id: user_house.id, house: { admin_notes: '<p>This is a test</p>'} }
+
+        expect(assigns(:house)).to eq user_house
+        expect(user_house.reload.admin_notes).to eq '<p>This is a test</p>'
+      end
+
+      it 'can update the user notes' do
+        expect(subject.current_user).to_not eq(nil)
+        expect(user_house.user_notes).to eq nil
+
+        put :update, { id: user_house.id, house: { user_notes: '<p>This is a test</p>'} }
+
+        expect(assigns(:house)).to eq user_house
+        expect(user_house.reload.user_notes).to eq '<p>This is a test</p>'
+      end
+    end
+
+    context 'as an non admin user' do
+      before { sign_in new_user }
+
+      it 'cannot update the admin notes' do
+        expect(subject.current_user).to_not eq(nil)
+        expect(user_house.admin_notes).to eq nil
+
+        put :update, { id: user_house.id, house: { admin_notes: '<p>This is a test</p>'} }
+
+        expect(assigns(:house)).to eq user_house
+        expect(user_house.reload.admin_notes).to eq nil
+      end
+
+      it 'can update the user notes' do
+        expect(subject.current_user).to_not eq(nil)
+        expect(user_house.user_notes).to eq nil
+
+        put :update, { id: user_house.id, house: { user_notes: '<p>This is a test</p>'} }
+
+        expect(assigns(:house)).to eq user_house
+        expect(user_house.reload.user_notes).to eq '<p>This is a test</p>'
+      end
+    end
+  end
 end
